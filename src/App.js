@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 import HistoryTable from "./components/historyTable";
-import Map from "./components/map";
+import MyMap from "./components/map";
 
 import "./App.css";
 
@@ -15,8 +15,8 @@ class App extends Component {
         <div className="App">
           <Switch>
             <Route path="/history" component={HistoryTable}></Route>
-            <Route path="/map" component={Map}></Route>
-            <Route path="/" component={Map}></Route>
+            <Route path="/map" component={MyMap}></Route>
+            <Route path="/" component={MyMap}></Route>
           </Switch>
         </div>
       </div>
