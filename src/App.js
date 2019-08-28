@@ -15,12 +15,3 @@ class App extends Component {
 }
 
 export default App;
-
-/**        <NavBar></NavBar>
-        <div className="App">
-          <Switch>
-            <Route path="/history" component={HistoryTable}></Route>
-            <Route path="/map" component={MyMap}></Route>
-            <Route path="/" component={MyMap}></Route>
-          </Switch>
-        </div> */

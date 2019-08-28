@@ -1,12 +1,13 @@
 import React from "react";
 import AppBar from "./appBar";
-import Map from "./map";
+import DrawMap from "./drawMap";
 
+//AppBar on top and drawMap on bottom
 const PageOne = () => {
   return (
     <div>
       <AppBar></AppBar>
-      <Map></Map>
+      <DrawMap></DrawMap>
     </div>
   );
 };
