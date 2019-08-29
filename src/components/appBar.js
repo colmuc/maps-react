@@ -17,8 +17,8 @@ export default function ButtonAppBar() {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      <AppBar position="static" color="primary">
+    <div className="">
+      <AppBar position="" color="primary">
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
             Maps Creator

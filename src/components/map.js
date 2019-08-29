@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { GoogleMap, withScriptjs, withGoogleMap } from "react-google-maps";
 
 function Map() {
@@ -13,7 +13,7 @@ const WrappedMap = withScriptjs(withGoogleMap(Map));
 
 const MyMap = () => {
   return (
-    <div style={{ width: "73vw", height: "100vh" }}>
+    <div style={{ width: "auto", height: "100vh" }}>
       <WrappedMap
         googleMapURL={
           "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"

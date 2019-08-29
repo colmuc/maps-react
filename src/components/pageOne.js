@@ -6,10 +6,13 @@ import DrawMap from "./drawMap";
 const PageOne = () => {
   return (
     <div>
-      <AppBar></AppBar>
+      <div>
+        <AppBar></AppBar>
+      </div>
       <DrawMap></DrawMap>
     </div>
   );
 };
 
 export default PageOne;
+/** <AppBar style={{ height: "auto" }}></AppBar> */
