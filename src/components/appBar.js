@@ -18,7 +18,7 @@ export default function ButtonAppBar() {
 
   return (
     <div className="">
-      <AppBar position="" color="primary">
+      <AppBar position="static" color="primary">
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
             Maps Creator

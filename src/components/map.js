@@ -1,11 +1,22 @@
 import React from "react";
-import { GoogleMap, withScriptjs, withGoogleMap } from "react-google-maps";
+import {
+  GoogleMap,
+  withScriptjs,
+  withGoogleMap,
+  Circle
+} from "react-google-maps";
+
+//Should make a circle or polygon depending on what tool is checked. Should get this from redux store
+const makeShape = event => {
+  return null;
+};
 
 function Map() {
   return (
     <GoogleMap
       defaultZoom={10}
       defaultCenter={{ lat: 35.461107, lng: -97.502961 }}
+      onClick={makeShape}
     />
   );
 }
