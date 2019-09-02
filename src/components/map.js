@@ -7,8 +7,16 @@ import {
 } from "react-google-maps";
 
 //Should make a circle or polygon depending on what tool is checked. Should get this from redux store
-const makeShape = event => {
-  return null;
+const makeShape = props => {
+  return (
+    <Circle
+      defaultCenter={{
+        lat: props.defaultCenter.lat,
+        lng: props.defaultCenter.lng
+      }}
+      radius={50}
+    ></Circle>
+  );
 };
 
 function Map() {
@@ -16,7 +24,7 @@ function Map() {
     <GoogleMap
       defaultZoom={10}
       defaultCenter={{ lat: 35.461107, lng: -97.502961 }}
-      onClick={makeShape}
+      onClick={null}
     />
   );
 }
