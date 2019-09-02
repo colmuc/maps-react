@@ -1,22 +1,16 @@
 import React from "react";
-import { MenuItem, MenuList, Grid } from "@material-ui/core";
-import PageOne from "./pageOne";
+import { MenuItem, MenuList } from "@material-ui/core";
+import { Link } from "react-router-dom";
 
 export default function PermanentDrawer() {
   return (
-    <Grid container>
-      <Grid item xs={1}>
-        <div className="">
-          <MenuList>
-            <MenuItem>Draw</MenuItem>
-
-            <MenuItem>History</MenuItem>
-          </MenuList>
-        </div>
-      </Grid>
-      <Grid item xs>
-        <PageOne></PageOne>
-      </Grid>
-    </Grid>
+    <MenuList>
+      <Link to="/draw">
+        <MenuItem>Draw</MenuItem>
+      </Link>
+      <Link to="/history">
+        <MenuItem>History</MenuItem>
+      </Link>
+    </MenuList>
   );
 }
