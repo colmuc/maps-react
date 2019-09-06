@@ -1,48 +1,79 @@
-import React from "react";
 import {
   GoogleMap,
-  withScriptjs,
+  Marker,
+  Circle,
   withGoogleMap,
-  Circle
+  withScriptjs
 } from "react-google-maps";
+import React, { Component } from "react";
 
-//Should make a circle or polygon depending on what tool is checked. Should get this from redux store
-const makeShape = props => {
-  return (
-    <Circle
-      defaultCenter={{
-        lat: props.defaultCenter.lat,
-        lng: props.defaultCenter.lng
-      }}
-      radius={50}
-    ></Circle>
-  );
-};
-
-function Map() {
-  return (
+const MyMapComponent = withScriptjs(
+  withGoogleMap(props => (
     <GoogleMap
-      defaultZoom={10}
+      defaultZoom={8}
       defaultCenter={{ lat: 35.461107, lng: -97.502961 }}
-      onClick={null}
-    />
-  );
+      onClick={event => props.onClick(event)}
+    >
+      {props.isMarkerShown && (
+        <Marker
+          position={{
+            lat: props.markerPoints.lat,
+            lng: props.markerPoints.lng
+          }}
+          onClick={props.onMarkerClick}
+        />
+      )}
+    </GoogleMap>
+  ))
+);
+
+class Map extends Component {
+  state = {
+    isMarkerShown: false,
+    markerPoints: { lat: 35.461107, lng: -97.502961 }
+  };
+
+  componentDidMount() {
+    this.delayedShowMarker();
+  }
+
+  delayedShowMarker = () => {
+    setTimeout(() => {
+      this.setState({ isMarkerShown: true });
+    }, 3000);
+  };
+
+  handleMarkerClick = () => {
+    this.setState({ isMarkerShown: false });
+    this.delayedShowMarker();
+  };
+
+  handleClick = event => {
+    const lat = event.latLng.lat();
+    const lng = event.latLng.lng();
+    const markerPoints = { lat, lng };
+
+    this.setState({ markerPoints });
+  };
+
+  render() {
+    return (
+      <div style={{ width: "auto", height: "100vh" }}>
+        <MyMapComponent
+          markerPoints={this.state.markerPoints}
+          isMarkerShown={this.state.isMarkerShown}
+          onMarkerClick={this.handleMarkerClick}
+          googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
+          loadingElement={<div style={{ height: `100%` }} />}
+          containerElement={<div style={{ height: `100%` }} />}
+          mapElement={<div style={{ height: `100%` }} />}
+          onClick={event => {
+            this.handleClick(event);
+          }}
+        />
+      </div>
+    );
+  }
 }
-const WrappedMap = withScriptjs(withGoogleMap(Map));
 
-const MyMap = () => {
-  return (
-    <div style={{ width: "auto", height: "100vh" }}>
-      <WrappedMap
-        googleMapURL={
-          "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
-        }
-        loadingElement={<div style={{ height: "100%" }} />}
-        containerElement={<div style={{ height: "100%" }} />}
-        mapElement={<div style={{ height: "100%" }} />}
-      />
-    </div>
-  );
-};
-
-export default MyMap;
+export default Map;

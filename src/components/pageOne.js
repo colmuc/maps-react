@@ -15,4 +15,3 @@ const PageOne = () => {
 };
 
 export default PageOne;
-/** <AppBar style={{ height: "auto" }}></AppBar> */
