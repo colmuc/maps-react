@@ -1,5 +1,5 @@
 import React from "react";
-import Map from "./testMap";
+import Map from "./map";
 
 import ToolsList from "./ToolsList";
 import { Grid, Paper } from "@material-ui/core";
